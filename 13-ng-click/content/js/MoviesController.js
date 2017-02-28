@@ -1,4 +1,9 @@
 function MoviesController() {
+  this.likesList = [];
+  this.addToLikes = function (movie) {
+    this.likesList.push(movie);
+  };
+
   this.favorites = [{
     title: 'The Shawshank Redemption',
     year: '1994',

@@ -13,20 +13,24 @@
   </head>
   <body>
     <div ng-controller="MoviesController as movies">
+      <div class="likes">
+        <p>
+          Todd's like list
+        </p>
+        <ul>
+          <li ng-repeat="like in movies.likesList">
+            <p>{{ like.title }}
+          </li>
+        </ul>
+      </div>
       <ul>
-        <li
-          ng-class="{
-            old: movie.year < 1995,
-            modern: movie.year > 1995 && movie.year < 2000,
-            new: movie.year > 2000
-          }"
-          ng-repeat="movie in movies.favorites">
-          <img ng-src="https://images-na.ssl-images-amazon.com/images/{{movie.img}}" alt="">
-          <a ng-href="http://www.imdb.com/title/{{movie.imdb}}" target="_blank">
+        <li ng-repeat="movie in movies.favorites">
+          <p>
             {{ movie.title }}
+          </p>
+          <a href="" ng-click="movies.addToLikes(movie);">
+            Like this movie
           </a>
-          <p>Released in: {{ movie.year }}</p>
-          <input type="text" ng-model="movie.year">
         </li>
       </ul>
     </div>
