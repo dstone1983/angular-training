@@ -1,11 +1,17 @@
 function MoviesController() {
-  this.likesList = [];
-  this.addToLikes = function (movie) {
-    this.likesList.push(movie);
+  this.newTitle = '';
+  this.newRelease = '';
+  this.onFocus = function() {
+    console.log('Focus!');
   };
-
-  this.unlike = function (index) {
-    this.likesList.splice(index, 1);
+  this.onBlur = function() {
+    console.log('Blur!');
+  };
+  this.addMovie = function() {
+      this.favorites.unshift({
+          title: this.newTitle,
+          year: this.newRelease
+      })
   }
 
   this.favorites = [{

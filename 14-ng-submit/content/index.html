@@ -3,7 +3,7 @@
   <title>My Angular app</title>
   <script src="js/angular.js"></script>
   <style>
-    .likes {
+    form {
       background: #f9f9f9;
       border-radius: 3px;
       border: 1px solid #e5e5e5;
@@ -13,27 +13,28 @@
 </head>
 <body>
 <div ng-controller="MoviesController as movies">
-  <div class="likes">
+  <form ng-submit="movies.addMovie();">
     <p>
-      Todd's like list
+      Add a movie
     </p>
-    <ul>
-      <li ng-repeat="like in movies.likesList">
-        <p>{{ like.title }}</p>
-        <a href="" ng-click="movies.unlike($index);">
-          Unlike!
-        </a>
-      </li>
-    </ul>
-  </div>
+    <input
+            type="text"
+            placeholder="Title"
+            ng-model="movies.newTitle">
+    <input
+            type="text"
+            placeholder="Release year"
+            ng-model="movies.newRelease">
+    <button type="submit">
+      Add new movie!
+    </button>
+  </form>
   <ul>
     <li ng-repeat="movie in movies.favorites">
       <p>
-        {{ movie.title }}
+        {{ movie.title }} {{ $index }}
       </p>
-      <a href="" ng-click="movies.addToLikes(movie);">
-        Like this movie
-      </a>
+      <p>Released in: {{ movie.year }}</p>
     </li>
   </ul>
 </div>
